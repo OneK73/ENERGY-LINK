@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+  body, html { width:100%; height:100%; overflow: hidden; }
+  body { background: #0b1b35; color: white; }
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+  }
+
+  .slide.active { opacity: 1; transform: translateX(0); }
+  .slide.out-left { transform: translateX(-100%); opacity: 0; }
+  .slide h1 { font-size: 48px; margin-bottom: 15px; }
+  .slide p { font-size: 20px; margin-bottom: 30px; max-width: 600px; }
+
+  .btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    background: #ffcc00;
+    color: #0b1b35;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn:hover { background: #e6b800; }
+
+  nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        background: #1e1d57;
+        box-shadow: 0 2px 6px rgba(191, 210, 216, 0.1);
+        z-index: 1000;
+    }
+    nav .logo {
+        font-weight: bold;
+        margin-right: 40px;
+        color:white;
+    }
+    nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #d3dcdd;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    nav a:hover {
+        background: #eaeaea;
+    }
+
+</style>
+</head>
+<body>
+  <nav>
+    <div class="logo">EnerLink</div>
+    <a href="solutions.html">Solution</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="account.html">Account</a>
+    <a href="feedback.html">Feedback</a>
+</nav>
+
+<div class="slide active" id="slide1">
+  <h1>Welcome to EnerLink</h1>
+  <p>Turning Every Building Into a Mini Power Plant.</p>
+   <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<div class="slide" id="slide2">
+  <h1>Buy Tokens </h1>
+  <p>Request Tokens to Buy and manage them with ease and transparency.</p>
+  <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<div class="slide" id="slide3">
+  <h1>Gift Tokens Easily</h1>
+  <p>Send gifts to your friends and family with just a few clicks.</p>
+   <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<div class="slide" id="slide4">
+  <h1>Pay & Manage Accounts</h1>
+  <p>Track your payments, top-up wallets, and manage your  tokens effortlessly.</p>
+   <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<div class="slide" id="slide5">
+  <h1>Okoa Tokens Easily</h1>
+  <p>Request Tokens to Okoa and manage repayments with ease and transparency.</p>
+  <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<div class="slide" id="slide6">
+  <h1>Earn Green Rewards</h1>
+  <p>For Responsible Usage and Timely Repayment.</p>
+  <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<div class="slide" id="slide7">
+  <h1>Track  Energy Usage </h1>
+  <p>Track Real Time Energy Usage Data Via IoT-enabled Smart Meters.</p>
+  <button class="btn" onclick="goMarketplace()">Get Started</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  
+  function showNextSlide() {
+    slides[currentSlide].classList.remove('active');
+    slides[currentSlide].classList.add('out-left');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+    slides[currentSlide].classList.remove('out-left');
+  }
+
+  setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+
+  function goMarketplace() {
+    window.location.href = 'marketplace.html'; // replace with your marketplace page
+  }
+</script>
+
+</body>
+</html>

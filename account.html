@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Center</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    body {
+      background: #0a1c38;
+      padding: 20px;
+    }
+
+    .account-box {
+      max-width: 450px;
+      margin: auto;
+      background: rgb(155, 190, 236);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      animation: fadeIn .7s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 { color: #0b1b35; text-align: center; margin-bottom: 20px; }
+
+    label { font-weight: bold; margin-top: 10px; display: block; }
+
+    input {
+      width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 10px; margin-top: 5px;
+    }
+
+    button {
+      width: 100%; padding: 12px; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;
+      margin-top: 15px; transition: 0.3s;
+    }
+
+    .save-btn { background: #0b1b35; color: white; }
+    .save-btn:hover { background: #133b77; }
+
+    .logout-btn { background: #17a022; color: white; }
+    .logout-btn:hover { background: #47a55b; }
+
+    .delete-btn { background: #1fc93b; color: white; }
+    .delete-btn:hover { background: #31ce53; }
+
+    .year-box {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 14px;
+      background: #eaf0fa;
+      border-left: 6px solid #133b77;
+    }
+
+    select {
+      width: 100%; padding: 12px; border-radius: 10px; margin-top: 5px; border: 1px solid #ccc;
+    }
+
+      /* NAVIGATION */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        background: #1e1d57;
+        box-shadow: 0 2px 6px rgba(191, 210, 216, 0.1);
+        z-index: 1000;
+    }
+    nav .logo {
+        font-weight: bold;
+        margin-right: 40px;
+        color:white;
+    }
+    nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #d3dcdd;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    nav a:hover {
+        background: #eaeaea;
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">EnerLink</div>
+    <a href="solutions.html">Solution</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="account.html">Account</a>
+    <a href="feedback.html">Feedback</a>
+</nav>
+
+<div class="account-box">
+  <h2>My Account</h2>
+
+  <!-- Editable Info -->
+  <label>Full Name</label>
+  <input type="text" placeholder="Enter full name" />
+
+  <label>Email(Optional)</label>
+  <input type="email" placeholder="Enter email" />
+
+  <label>Phone Number</label>
+  <input type="tel" placeholder="Enter phone number" />
+
+  <label>Meter ID</label>
+  <input type="text" placeholder="Enter your Meter ID" />
+
+  <button class="save-btn">Save Changes</button>
+
+  <!-- Account Year Info -->
+  <div class="year-box">
+    <label>Year Registered</label>
+    <select>
+      <option>2025</option>
+      <option>2024</option>
+      <option>2023</option>
+      <option>2022</option>
+    </select>
+  </div>
+
+  <!-- Logout and Delete -->
+  <button class="logout-btn">Log Out</button>
+  <button class="delete-btn">Delete Account</button>
+</div>
+
+<script>
+  // Placeholder JS for animations or actions later
+  console.log("Account Page Loaded");
+</script>
+
+</body>
+</html>

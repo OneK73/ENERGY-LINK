@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #153050;
+      color:white;
+    }
+
+    /* Top Navbar */
+    /* NAVIGATION */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        background: #1e1d57;
+        box-shadow: 0 2px 6px rgba(191, 210, 216, 0.1);
+        z-index: 1000;
+    }
+    nav .logo {
+        font-weight: bold;
+        margin-right: 40px;
+        color:white;
+    }
+    nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #d3dcdd;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    nav a:hover {
+        background: #eaeaea;
+    }
+
+    /* Page Content */
+    .container {
+      margin-top: 90px;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgb(128, 176, 199);
+      color:black;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      text-align: center;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px;
+      width: 90%;
+      max-width: 380px;
+      border-radius: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #aaa;
+      margin-top: 10px;
+    }
+
+    button.action {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: #0b1b35;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+    <nav>
+    <div class="logo">EnerLink</div>
+    <a href="solutions.html">Solution</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="account.html">Account</a>
+    <a href="#">Feedback</a>
+</nav>
+
+  <div class="container">
+    <h2>Marketplace</h2>
+    <div class="grid">
+
+      <div class="card" onclick="openModal('buy')">
+        <img src="https://img.icons8.com/color/96/coin.png" />
+        <h3>Buy Tokens</h3>
+      </div>
+
+      <div class="card" onclick="openModal('gift')">
+        <img src="https://img.icons8.com/color/96/gift.png" />
+        <h3>Gift Tokens</h3>
+      </div>
+
+      <div class="card" onclick="openModal('okla')">
+        <img src="https://img.icons8.com/color/96/wallet.png" />
+        <h3>Okoa Tokens</h3>
+      </div>
+
+      <div class="card" onclick="openModal('pay')">
+        <img src="https://img.icons8.com/color/96/bank-card.png" />
+        <h3>Pay Okoa Tokens</h3>
+      </div>
+
+      <div class="card" onclick="openModal('history')">
+        <img src="https://img.icons8.com/color/96/activity-history.png" />
+        <h3>Payment History</h3>
+      </div>
+
+      <div class="card" onclick="openModal('loan')">
+        <img src="https://img.icons8.com/color/96/borrow.png" />
+        <h3>Take Loan</h3>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
+<script>
+  function openModal(type) {
+    const modal = document.getElementById("modal");
+    const box = document.getElementById("modalContent");
+
+    let content = "";
+
+    if (type === "gift") {
+      content = `
+        <h3>Gift Tokens</h3>
+        <input placeholder="Enter person username or phone" />
+        <input placeholder="Amount" type="number" />
+        <button class="action">Gift Tokens</button>
+      `;
+    }
+
+    if (type === "buy") {
+      content = `
+        <h3>Buy Tokens</h3>
+        <select>
+          <option>Select Payment Method</option>
+          <option>M-Pesa</option>
+          <option>Credit Card</option>
+        </select>
+        <input placeholder="Amount" type="number" />
+        <button class="action">Buy Now</button>
+      `;
+    }
+
+    if (type === "pay") {
+      content = `
+        <h3>Pay Tokens</h3>
+        <select>
+          <option>Select Payment Method</option>
+          <option>M-Pesa</option>
+          <option>Bank Card</option>
+        </select>
+        <input placeholder="Amount" type="number" />
+        <button class="action">Pay</button>
+      `;
+    }
+
+    if (type === "okla") {
+      content = `<h3>Okla Tokens</h3><p>Manage your Okla token balance.</p>`;
+    }
+
+    if (type === "history") {
+      content = `<h3>Payment History</h3><p>No transactions yet.</p>`;
+    }
+
+    if (type === "loan") {
+      content = `
+        <h3>Request Loan</h3>
+        <select>
+          <option>Select Loan Type</option>
+          <option>Short Term</option>
+          <option>Long Term</option>
+        </select>
+        <input placeholder="Amount" type="number" />
+        <button class="action">Apply</button>
+      `;
+    }
+
+    box.innerHTML = content;
+    modal.style.display = "flex";
+  }
+
+  document.getElementById("modal").addEventListener("click", function (e) {
+    if (e.target.id === "modal") this.style.display = "none";
+  });
+ 
+  </script>
+</body>
+</html>

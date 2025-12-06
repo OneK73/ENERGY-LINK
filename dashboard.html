@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #122346;
+    }
+
+    /* NAVIGATION */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        background: #1e1d57;
+        box-shadow: 0 2px 6px rgba(191, 210, 216, 0.1);
+        z-index: 1000;
+    }
+    nav .logo {
+        font-weight: bold;
+        margin-right: 40px;
+        color:white;
+    }
+    nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #d3dcdd;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    nav a:hover {
+        background: #eaeaea;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+        margin-top: 80px;
+        padding: 20px;
+    }
+
+    /* CARDS */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .card {
+        background: rgb(151, 180, 212);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* GRAPH SECTION SIDE-BY-SIDE */
+    .graphs {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .graph-box {
+        flex: 1;
+        background: rgb(132, 143, 182);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        height: 350px;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">EnerLink</div>
+    <a href="solutions.html">Solution</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="account.html">Account</a>
+    <a href="#">Feedback</a>
+</nav>
+
+<div class="container">
+
+    <div class="cards">
+        <div class="card">Wallet Balance: $250</div>
+        <div class="card">Okoa Tokens Balance: 142</div>
+        <div class="card">Tokens Remaining: 12 </div>
+        <div class="card">Energy Used Today:120kwh: +3 kWh</div>
+    </div>
+
+    <!-- SIDE BY SIDE GRAPHS -->
+    <div class="graphs">
+        <div class="graph-box">
+            <canvas id="loanGraph"></canvas>
+        </div>
+        <div class="graph-box">
+            <canvas id="energyGraph"></canvas>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Loan Graph
+new Chart(document.getElementById('loanGraph'), {
+    type: 'line',
+    data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        datasets: [{
+            label: 'Loan Over Time',
+            data: [50, 120, 90, 180],
+            borderWidth: 3,
+            borderColor: '#2b8dfc',
+            tension: 0.4,
+            fill: false
+        }]
+    }
+});
+
+// Energy Graph
+new Chart(document.getElementById('energyGraph'), {
+    type: 'line',
+    data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        datasets: [{
+            label: 'Energy Usage',
+            data: [20, 25, 30, 22],
+            borderWidth: 3,
+            borderColor: '#4caf50',
+            tension: 0.4,
+            fill: false
+        }]
+    }
+});
+</script>
+
+</body>
+</html>

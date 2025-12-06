@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enerlink | Login & Register</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #0b1b35, #133b77);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Floating circles animation */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1) { width: 140px; height: 140px; top: 10%; left: 10%; }
+    .circle:nth-child(2) { width: 220px; height: 220px; bottom: 15%; right: 8%; animation-duration: 8s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-25px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .auth-box {
+      width: 350px;
+      background: rgb(134, 219, 179);
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      position: relative;
+      animation: pop 0.7s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #0b1b35;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-top: 12px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 18px;
+      background: #0b1b35;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #133b77;
+    }
+
+    .toggle {
+      color: #133b77;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    .fade {
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <div class="auth-box" id="box">
+    <h2 id="title"> Login</h2>
+
+    <div id="login" class="fade">
+      <input type="text" placeholder="Phone Number or Email" />
+      <input type="Meter ID" placeholder="meter ID" />
+      <button class="form-btn"onclick="login()">Login</button>
+      <span class="toggle" onclick="switchForm('register')">Don't have an account? Register</span>
+    </div>
+
+    <div id="register" class="fade" style="display:none;">
+      <input type="text" placeholder="Full Name" />
+      <input type="text" placeholder="Email or Phone Number" />
+      <input type="password" placeholder="Meter ID" />
+      <button class="form-btn"onclick ="register()">Register</button>
+      <span class="toggle" onclick="switchForm('login')">Already have an account? Login</span>
+    </div>
+  </div>
+
+<script>
+  function switchForm(type) {
+    let login = document.getElementById('login');
+    let register = document.getElementById('register');
+    let title = document.getElementById('title');
+
+    if (type === 'register') {
+      login.style.display = 'none';
+      register.style.display = 'block';
+      title.innerText = 'Register';
+    } else {
+      login.style.display = 'block';
+      register.style.display = 'none';
+      title.innerText = 'Login';
+    }
+  }
+</script>
+
+</body>
+</html>
